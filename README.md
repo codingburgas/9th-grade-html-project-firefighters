@@ -1,4 +1,6 @@
-<h1 align="center">Firefighters</h1>
+<p align="center">
+ <img src="FireFighters_logoFull.png" alt="FireFighters_logoFull">
+  </p>
 <br>
 
 
@@ -27,7 +29,7 @@ Firefighters is part of a worldwide safety act which focuses on reporting and in
     <td align="center"><img src="https://cdn.discordapp.com/attachments/1361767950180286575/1380780536183783506/image.png?ex=68451f95&is=6843ce15&hm=d7b89b77e0f85303f7351aabd9c47702bf81dfdace841a15868f370a0580dbef&" width="50" height="50" ></td>
     <td><b>Damyan Kerchev</b></td>
     <td>BackEnd Developer, Designer</td>
-    <td><span style="background-color: blue; color: black; padding: 5px 10px; border-radius: 5px;">9A</span></td>
+    <td><span style="background-color: yellow; color: black; padding: 5px 10px; border-radius: 5px;">9A</span></td>
     <td>https://github.com/DVKerchev23</td>
   </tr>
 </table>
