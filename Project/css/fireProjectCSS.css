@@ -21,6 +21,10 @@
     --transition-main: .175, .685, .32;
     /* Fonts */
     --font-main: "Poppins";
+
+
+    --navbar-bg: 0, 0%, 100%; /* white */
+    --navbar-text: 0, 0%, 0%; /* black text/icons */
 }
 
 /* ===========
@@ -43,6 +47,7 @@ html, body {
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
     box-sizing: border-box;
+    transition: background-color 0.3s ease-in-out;
 }
 
 /* ============
@@ -247,8 +252,8 @@ select {
     width: 5em;
     height: 100vh;
     position: fixed;
-    background-color: hsl(var(--background-secondary));
-    transition: width .35s cubic-bezier(var(--transition-main), 1);
+    background-color: hsl(var(--navbar-bg));
+    transition: background-color 0.3s ease-in-out;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -275,7 +280,8 @@ select {
     margin: 0 0 2em 0;
     width: 100%;
     height: 5em;
-    background: hsl(var(--background-secondary-dark));
+    background-color: hsl(var(--navbar-bg));
+    transition: background-color 0.3s ease-in-out;
 }
 .navbar-logo > .navbar-item-inner {
     width: calc(5rem - 8px);
@@ -299,14 +305,14 @@ select {
     padding: 1em 0;
     width: 100%;
     position: relative;
-    color: hsl(var(--quite-gray));
+    color: hsl(var(--navbar-text));
     border-radius: .25em;
     text-decoration: none;
     transition: all .2s cubic-bezier(var(--transition-main), 1);
 }
 .navbar-item-inner:hover {
-    color: hsl(var(--white));
-    background: hsl(var(--background-secondary-light));
+    background: hsla(var(--navbar-text), 0.1); /* light transparent overlay */
+    color: hsl(var(--navbar-text));
     box-shadow: 0 17px 30px -10px hsla(var(--black), .25);
 }
 .navbar-item-inner-icon-wrapper {
@@ -443,6 +449,18 @@ body {
 
 #mapid {
     height: 600px; 
-    width: 100%;
-    margin-top: 10px; 
+    width: calc(100% - 14.7em); /* account for navbar width */
+    margin-left: 14.7em;
+    margin-top: 10px;
 }
+
+
+body.dark-mode {
+    --navbar-bg: 0, 0%, 10%;  /* very dark gray, not full black */
+    --navbar-text: 0, 0%, 100%; /* white text/icons */
+    --background: 220, 30%, 20%;
+    --text-primary: 0, 0%, 0%;
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--text-primary));
+}
+
