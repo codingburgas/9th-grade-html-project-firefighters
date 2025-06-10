@@ -3,9 +3,9 @@
 
 <head>
    
-    <link rel="stylesheet" href="../css/Report.css">
+    <link rel="stylesheet" href="../css/articles.css">
 
-    <title>Report</title>
+    <title>Articles</title>
 
 
 <!--include leaflet library -->
@@ -18,22 +18,31 @@
 
 
 <body>
-    
-
-<!-- Map -->
 
     <nav id="navbar">
     </nav>
 
     <main id="main" class="flexbox-col">
-    
-        <div id="mapid"></div>
+      <h1>Articles</h1>
+  
+  <div class="articles-row">
+    <a class="article-card" href="../html/wildfires.html">
+      <img src="../images/house.jpg" alt="Article 1 image">
+      <p>Wildfires safety guide</p>
+    </a>
+    <a class="article-card" href="../html/earthquakes.html">
+      <img src="../images/earthquake.png" alt="Article 2 image" >
+      <p>Earthquakes safety guide</p>
+    </a>
+  </div>
+
+  <p class="coming-soon">More to come soon...</p>
     </main>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
-    <script src="../javascript/Report.js"></script>
+    <script src="../javascript/articles.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -45,9 +54,10 @@
 <nav id="navbar">
   <ul class="navbar-items flexbox-col">
    <li class="navbar-logo flexbox-left">
- <img src="../images/FireFighters_logo.png" alt="My Company Logo" class="logo-image">
-</a>
- </li>
+      <a class="navbar-item-inner flexbox">
+        <img src="../images/FireFighters_logo.png" alt="My Company Logo" class="logo-image">
+      </a>
+    </li>
     <li class="navbar-item flexbox-left">
       <a href="../html/index.html" class="navbar-item-inner flexbox-left">
         <div class="navbar-item-inner-icon-wrapper flexbox">
@@ -65,7 +75,7 @@
       </a>
     </li>
     <li class="navbar-item flexbox-left">
-      <a href="../html/AboutUs.html" class="navbar-item-inner flexbox-left">
+      <a href="../html/aboutus.html" class="navbar-item-inner flexbox-left">
         <div class="navbar-item-inner-icon-wrapper flexbox">
           <ion-icon name="people-outline"></ion-icon>
         </div>
