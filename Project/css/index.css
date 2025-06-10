@@ -60,6 +60,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Font Size */
 h1 {
     font-size: var(--heading-large);
+    text-align: center;
+    color: hsl(var(--black));
 }
 h2 {
     font-size: var(--heading-medium);
@@ -459,5 +461,58 @@ body.dark-mode {
     --text-primary: 0, 0%, 0%;
     background-color: hsl(var(--background)) !important;
     color: hsl(var(--text-primary));
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.info-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border: 2px solid hsl(var(--black));
+    border-radius: 12px;
+    text-decoration: none;
+    color: hsl(var(--text-primary));
+    background-color: hsl(0, 0%, 95%); /* Light gray for light mode */
+    transition: background-color 0.3s, transform 0.2s;
+    min-width: 200px;
+}
+
+.info-button:hover {
+    background-color: hsla(var(--primary), 0.2);
+    transform: translateY(-5px);
+}
+
+/* Better colors in dark mode */
+body.dark-mode .info-button {
+    background-color: hsl(240, 10%, 25%); /* Dark muted blue-gray */
+    border-color: hsl(0, 0%, 60%);
+    color: hsl(0, 0%, 90%);
+}
+
+body.dark-mode .info-button:hover {
+    background-color: hsl(240, 10%, 35%);
+}
+
+.info-button h2 {
+    margin-bottom: 0.5rem;
+    font-size: var(--heading-small);
+}
+
+.info-button h3 {
+    font-size: var(--paragraph);
+    font-weight: normal;
+}
+
+body.dark-mode h1 {
+    color: hsl(0, 0%, 90%); /* Light gray or soft white for dark mode */
 }
 
