@@ -6,34 +6,28 @@
     --background-secondary-dark: 256, 10%, 10%;
     --background-secondary-light: 257, 11%, 16%;
     --text-primary: 0, 0%, 0%;
-    /* Colors */
+
     --black: 0, 0%, 0%;
     --white: 0, 0%, 100%;
     --quite-gray: 0, 0%, 50%;
     --grooble: 10, 28%, 93%;
-    /* Sizes */
+ 
     --heading-large: 5.6rem;
     --heading-medium: 3.6rem;
     --heading-small: 2.4rem;
     --paragraph: 1.11rem;
     --navbar-buttons: 2.4rem;
-    /* misc */
+  
     --transition-main: .175, .685, .32;
-    /* Fonts */
+ 
     --font-main: "Poppins";
 
 
-    --navbar-bg: 0, 0%, 100%; /* white */
-    --navbar-text: 0, 0%, 0%; /* black text/icons */
+    --navbar-bg: 0, 0%, 100%; 
+    --navbar-text: 0, 0%, 0%; 
 }
 
-/* ===========
-    Variabels
-   =========== */
 
-/* ===============
-    Global Styles
-   =============== */
 
 *, *::before, *::after {
     box-sizing: inherit;
@@ -49,15 +43,11 @@ html, body {
     box-sizing: border-box;
 }
 
-/* ============
-    Typography
-   ============ */
 
-/* Headings */
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
-/* Font Size */
+
 h1 {
     font-size: var(--heading-large);
     text-align: center;
@@ -78,19 +68,19 @@ h5 {
 h6 {
     font-size: calc(var(--heading-small) - .6rem);
 }
-/* Font Weight */
+
 h1, h2 {
     font-weight: 900;
 }
 h3, h4, h5, h6 {
     font-weight: 800;
 }
-/* Paragraphs */
+
 p {
     margin: 0;
     font-size: var(--paragraph);
 }
-/* Links */
+
 a {
     color: hsla(var(--primary), 1);
     font-size: var(--paragraph);
@@ -100,9 +90,6 @@ a:visited {
     color: hsla(var(--primary), .5);
 }
 
-/* =========
-    Buttons
-   ========= */
 
 button {
     padding: .8em 1.2em;
@@ -119,17 +106,11 @@ button:focus {
     border: 1px solid transparent;
 }
 
-/* =======
-    Lists
-   ======= */
 
 ul, ol {
     margin: 1em 0;
 }
 
-/* =======
-    Forms
-   ======= */
 
 form {
     margin: 0;
@@ -170,17 +151,6 @@ select {
     outline: none;
 }
 
-/* =========
-    Classes
-   ========= */
-
-/* ================
-    Global classes
-   ================ */
-
-/* =========
-    Flexbox
-   ========= */
 
 .flexbox {
     display: flex;
@@ -197,7 +167,7 @@ select {
     justify-content: flex-end;
     align-items: center;
 }
-/* Columns */
+
 .flexbox-col {
     display: flex;
     justify-content: center;
@@ -228,24 +198,17 @@ select {
     flex-direction: column;
     align-items: center;
 }
-/* Spacings */
+
 .flexbox-space-bet {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* =========
-    Classes
-   ========= */
-
 .view-width {
     width: 70%;
 }
 
-/* ========
-    Navbar
-   ======== */
 
 #navbar {
     top: 0;
@@ -275,7 +238,7 @@ select {
     padding: 0;
     list-style-type: none;
 }
-/* Navbar Logo */
+
 .navbar-logo {
     margin: 0 0 2em 0;
     width: 100%;
@@ -294,7 +257,7 @@ select {
     max-width: 200%;
     object-fit: contain;
 }
-/* Navbar Items */
+
 .navbar-item {
     padding: 0 .5em;
     width: 100%;
@@ -310,7 +273,7 @@ select {
     transition: all .2s cubic-bezier(var(--transition-main), 1);
 }
 .navbar-item-inner:hover {
-    background: hsla(var(--navbar-text), 0.1); /* light transparent overlay */
+    background: hsla(var(--navbar-text), 0.1);
     color: hsl(var(--navbar-text));
     box-shadow: 0 17px 30px -10px hsla(var(--black), .25);
 }
@@ -336,9 +299,6 @@ select {
     opacity: 1;
 }
 
-/* ======
-    Main
-   ====== */
 
 #main {
     margin: 0 0 0 5em;
@@ -353,16 +313,12 @@ select {
     max-width: 80%;
 }
 
-/* =============
-    ::Selectors
-   ============= */
 
-/* Selection */
 ::selection {
     color: hsl(var(--white));
     background: hsla(var(--primary), .33);
 }
-/* Scrollbar */
+
 ::-webkit-scrollbar-track {
     background-color: hsl(var(--background));
 }
@@ -374,17 +330,11 @@ select {
     background-color: hsl(var(--primary));
 }
 
-/* ===============
-    5. @keyframes
-   =============== */
 
-/* ==============
-    @media rules
-   ============== */
 
 @media only screen and (max-width: 1660px) {
     :root {
-        /* Sizes */
+       
         --heading-large: 5.4rem;
         --heading-medium: 3.4rem;
         --heading-small: 2.2rem;
@@ -392,7 +342,7 @@ select {
 }
 @media only screen and (max-width: 1456px) {
     :root {
-        /* Sizes */
+ 
         --heading-large: 5.2rem;
         --heading-medium: 3.2rem;
         --heading-small: 2rem;
@@ -408,7 +358,7 @@ select {
 }
 @media only screen and (max-width: 1024px) {
     :root {
-        /* Sizes */
+
         --heading-large: 5rem;
         --heading-medium: 3rem;
         --heading-small: 1.8rem;
@@ -419,7 +369,7 @@ select {
 }
 @media only screen and (max-width: 756px) {
     :root {
-        /* Sizes */
+
         --heading-large: 4rem;
         --heading-medium: 2.6rem;
         --heading-small: 1.6rem;
@@ -448,15 +398,15 @@ body {
 
 #mapid {
     height: 600px; 
-    width: calc(100% - 14.7em); /* account for navbar width */
+    width: calc(100% - 14.7em); 
     margin-left: 14.7em;
     margin-top: 10px;
 }
 
 
 body.dark-mode {
-    --navbar-bg: 0, 0%, 10%;  /* very dark gray, not full black */
-    --navbar-text: 0, 0%, 100%; /* white text/icons */
+    --navbar-bg: 0, 0%, 10%;  
+    --navbar-text: 0, 0%, 100%;
     --background: 220, 30%, 20%;
     --text-primary: 0, 0%, 0%;
     background-color: hsl(var(--background)) !important;
@@ -481,7 +431,7 @@ body.dark-mode {
     border-radius: 12px;
     text-decoration: none;
     color: hsl(var(--text-primary));
-    background-color: hsl(0, 0%, 95%); /* Light gray for light mode */
+    background-color: hsl(0, 0%, 95%);
     transition: background-color 0.3s, transform 0.2s;
     min-width: 200px;
 }
@@ -491,9 +441,9 @@ body.dark-mode {
     transform: translateY(-5px);
 }
 
-/* Better colors in dark mode */
+
 body.dark-mode .info-button {
-    background-color: hsl(240, 10%, 25%); /* Dark muted blue-gray */
+    background-color: hsl(240, 10%, 25%);
     border-color: hsl(0, 0%, 60%);
     color: hsl(0, 0%, 90%);
 }
@@ -513,7 +463,7 @@ body.dark-mode .info-button:hover {
 }
 
 body.dark-mode h1 {
-    color: hsl(0, 0%, 90%); /* Light gray or soft white for dark mode */
+    color: hsl(0, 0%, 90%); 
 }
 
 body.dark-mode p, li, h2 {
