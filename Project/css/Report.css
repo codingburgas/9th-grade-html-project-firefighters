@@ -1,16 +1,16 @@
-
+/* Your Root Variables */
 :root {
-    --primary: 237, 94%, 81%;
-    --background: 266, 16%, 92%;
+    --primary: 237, 94%, 81%; /* Original primary for highlighting */
+    --background: 266, 16%, 92%; /* Light background */
     --background-secondary: 256, 12%, 12%;
     --background-secondary-dark: 256, 10%, 10%;
     --background-secondary-light: 257, 11%, 16%;
-    --text-primary: 0, 0%, 0%;
+    --text-primary: 0, 0%, 0%; /* Black text for light mode */
 
     --black: 0, 0%, 0%;
     --white: 0, 0%, 100%;
     --quite-gray: 0, 0%, 50%;
-    --grooble: 10, 28%, 93%;
+    --grooble: 10, 28%, 93%; /* Your input background color */
 
     --heading-large: 5.6rem;
     --heading-medium: 3.6rem;
@@ -20,15 +20,43 @@
 
     --transition-main: .175, .685, .32;
 
-    --font-main: "Poppins";
+    --font-main: "Poppins", sans-serif; /* Ensure Poppins is linked in HTML */
 
+    --navbar-bg: 0, 0%, 100%; /* White navbar */
+    --navbar-text: 0, 0%, 0%; /* Black navbar text */
 
-    --navbar-bg: 0, 0%, 100%; 
-    --navbar-text: 0, 0%, 0%; 
+    /* Map specific colors, adapted to your theme */
+    --map-circle-color: 0, 80%, 50%; /* A distinct red */
+    --map-accuracy-color: 200, 80%, 50%; /* A distinct blue */
+    --button-success-bg: 140, 60%, 45%; /* Green for report button */
+    --button-success-hover: 140, 60%, 40%;
+    --button-disabled-bg: 0, 0%, 75%; /* Grey when disabled */
 }
 
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
+@keyframes pulseBorder {
+    0% { border-color: #d4d4d4; box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+    50% { border-color: #3498db; box-shadow: 0 0 0 5px rgba(52, 152, 219, 0.3); }
+    100% { border-color: #d4d4d4; box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+}
+
+/* Base Resets & Global Styles */
 *, *::before, *::after {
     box-sizing: inherit;
 }
@@ -43,12 +71,17 @@ html, body {
     box-sizing: border-box;
 }
 
+body {
+    animation: fadeIn 0.8s ease-out;
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
 h1 {
     font-size: var(--heading-large);
+    text-align: center;
 }
 h2 {
     font-size: var(--heading-medium);
@@ -79,16 +112,15 @@ p {
 }
 
 a {
+    color: hsla(var(--primary), 1);
     font-size: var(--paragraph);
     text-decoration: underline;
-    color: black;
 }
-body.dark-mode a {
-    color: hsl(0, 0%, 70%);
+a:visited {
+    color: hsla(var(--primary), .5);
 }
 
-
-
+/* Button Base Styles */
 button {
     padding: .8em 1.2em;
     border: 1px solid hsl(var(--black));
@@ -96,6 +128,7 @@ button {
     font-size: var(--paragraph);
     cursor: pointer;
     outline: none;
+    transition: all .2s ease-in-out;
 }
 button:focus {
     box-shadow:
@@ -104,11 +137,9 @@ button:focus {
     border: 1px solid transparent;
 }
 
-
 ul, ol {
     margin: 1em 0;
 }
-
 
 form {
     margin: 0;
@@ -118,39 +149,30 @@ fieldset {
     padding: .5em 0;
     border: none;
 }
-input {
+
+/* Input/Select/Textarea Base Styles & Animations */
+input, select, textarea {
     padding: .8em 1.2em;
     font-size: var(--paragraph);
-    background-color: hsl(var(--grooble));
+    background-color: hsl(var(--grooble)); /* Uses the grooble variable */
     border: 2px solid hsl(var(--grooble));
     outline: none;
+    border-radius: .25em;
+    transition: all .2s cubic-bezier(var(--transition-main), 1);
 }
-textarea {
-    padding: .8em 1.2em;
-    font-size: var(--paragraph);
-    font-family: var(--font-main);
-    background-color: hsl(var(--grooble));
-    border: 2px solid hsl(var(--grooble));
-    outline: none;
-}
-input, textarea {
-    transition: all .2s ease-in-out;
-}
-input:hover, input:focus, textarea:hover, textarea:focus {
+
+input:hover, input:focus, textarea:hover, textarea:focus, select:hover, select:focus {
     box-shadow:
             0 0 0 2px hsl(var(--black)),
             0 0 0 3px hsl(var(--white));
     border: 2px solid transparent;
 }
-select {
-    padding: .8em 1.2em;
-    border: 1px solid hsl(var(--black));
-    font-size: var(--paragraph);
-    outline: none;
+textarea {
+    font-family: var(--font-main);
+    resize: vertical;
 }
 
-
-
+/* Flexbox Helpers */
 .flexbox {
     display: flex;
     justify-content: center;
@@ -166,7 +188,6 @@ select {
     justify-content: flex-end;
     align-items: center;
 }
-
 .flexbox-col {
     display: flex;
     justify-content: center;
@@ -197,7 +218,6 @@ select {
     flex-direction: column;
     align-items: center;
 }
-
 .flexbox-space-bet {
     display: flex;
     justify-content: space-between;
@@ -208,10 +228,10 @@ select {
     width: 70%;
 }
 
-
-
+/* Navbar Specific Styles */
 #navbar {
     top: 0;
+    left: 0;
     padding: 0;
     width: 5em;
     height: 100vh;
@@ -219,6 +239,8 @@ select {
     background-color: hsl(var(--navbar-bg));
     overflow-y: auto;
     overflow-x: hidden;
+    z-index: 1000;
+    transition: width .35s cubic-bezier(var(--transition-main), 1);
 }
 #navbar:hover {
     width: 16em;
@@ -238,7 +260,6 @@ select {
     padding: 0;
     list-style-type: none;
 }
-
 .navbar-logo {
     margin: 0 0 2em 0;
     width: 100%;
@@ -251,13 +272,11 @@ select {
 .navbar-logo > .navbar-item-inner:hover {
     background-color: transparent;
 }
-
 .navbar-logo .logo-image {
     height: 5em; 
     max-width: 200%;
     object-fit: contain;
 }
-
 .navbar-item {
     padding: 0 .5em;
     width: 100%;
@@ -299,26 +318,130 @@ select {
     opacity: 1;
 }
 
-
+/* Main Content Area */
 #main {
-    margin: 0 0 0 5em;
-    min-height: 150vh;
+    margin-left: 5em;
+    padding: 20px;
+    width: calc(100% - 5em);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    transition: margin-left .35s cubic-bezier(var(--transition-main), 1), width .35s cubic-bezier(var(--transition-main), 1);
 }
-#main > h2 {
-    width: 80%;
-    max-width: 80%;
-}
-#main > p {
-    width: 80%;
-    max-width: 80%;
+#navbar:hover + #main {
+    margin-left: 16em;
+    width: calc(100% - 16em);
 }
 
+/* Map & Controls Specific Styles */
+#controls {
+    background-color: hsl(var(--white));
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px hsla(var(--black), 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 25px;
+    animation: slideInUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+}
 
-::selection {
+.control-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.control-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: hsl(var(--quite-gray)); /* Default label color */
+    font-size: 0.95em;
+}
+
+.full-width {
+    grid-column: 1 / 3;
+}
+
+/* Report Button Specifics & Animations */
+#reportButton {
+    grid-column: 1 / 3;
+    padding: 14px 25px;
+    background-color: hsl(var(--button-success-bg));
     color: hsl(var(--white));
-    background: hsla(var(--primary), .33);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.15em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px hsla(var(--button-success-bg), 0.3);
 }
 
+#reportButton:hover:not(:disabled) {
+    background-color: hsl(var(--button-success-hover));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px hsla(var(--button-success-bg), 0.4);
+}
+
+#reportButton:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px hsla(var(--button-success-bg), 0.3);
+    background-color: hsla(var(--button-success-hover), 0.9);
+}
+
+#reportButton:disabled {
+    background-color: hsl(var(--button-disabled-bg));
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+/* Map Container */
+#mapid {
+    height: 600px;
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px hsla(var(--black), 0.2);
+    margin-bottom: 20px;
+    background-color: #ddd;
+    animation: slideInUp 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+/* Message Area Styles & Animations */
+#messageArea, #lastClickedLocation {
+    margin-top: 10px;
+    padding: 12px 18px;
+    background-color: hsl(var(--background));
+    border-left: 5px solid hsl(var(--primary));
+    border-radius: 6px;
+    color: hsl(var(--text-primary));
+    font-size: 0.95em;
+    max-width: 1000px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border-color 0.3s ease, opacity 0.5s ease;
+    box-shadow: 0 2px 5px hsla(var(--black), 0.05);
+}
+
+#lastClickedLocation {
+    background-color: hsla(var(--button-success-bg), 0.1);
+    border-left-color: hsl(var(--button-success-bg));
+}
+
+/* Placeholder for focus/click animation indication */
+#lastClickedLocation:empty::after {
+    content: "Click on the map to select the event location.";
+    color: hsl(var(--quite-gray));
+}
+
+/* Scrollbar styles */
 ::-webkit-scrollbar-track {
     background-color: hsl(var(--background));
 }
@@ -330,11 +453,33 @@ select {
     background-color: hsl(var(--primary));
 }
 
+/* Dark Mode Overrides for Visibility */
+body.dark-mode {
+    --navbar-bg: 256, 12%, 12%;
+    --navbar-text: 0, 0%, 100%;
+    --background: 256, 10%, 10%;
+    --text-primary: 0, 0%, 100%;
+    --grooble: 256, 15%, 25%; /* <-- ADJUSTED: Lighter input background for dark mode */
+    
+    --map-circle-color: 0, 80%, 65%;
+    --map-accuracy-color: 200, 80%, 65%;
+    --button-success-bg: 140, 70%, 55%;
+    --button-success-hover: 140, 70%, 50%;
+    --button-disabled-bg: 0, 0%, 40%; /* Keeping disabled button dark as per screenshot */
+    
+    background-color: hsl(var(--background));
+    color: hsl(var(--text-primary));
+}
+
+/* <-- ADDED: Ensure labels are visible in dark mode --> */
+body.dark-mode .control-group label {
+    color: hsl(var(--text-primary)); /* Use white text for labels in dark mode */
+}
 
 
+/* Media Queries */
 @media only screen and (max-width: 1660px) {
     :root {
-  
         --heading-large: 5.4rem;
         --heading-medium: 3.4rem;
         --heading-small: 2.2rem;
@@ -342,7 +487,6 @@ select {
 }
 @media only screen and (max-width: 1456px) {
     :root {
-   
         --heading-large: 5.2rem;
         --heading-medium: 3.2rem;
         --heading-small: 2rem;
@@ -358,7 +502,6 @@ select {
 }
 @media only screen and (max-width: 1024px) {
     :root {
-       
         --heading-large: 5rem;
         --heading-medium: 3rem;
         --heading-small: 1.8rem;
@@ -366,10 +509,15 @@ select {
     .view-width {
         width: 75%;
     }
+    #main {
+        padding: 15px;
+    }
+    #mapid {
+        height: 500px;
+    }
 }
 @media only screen and (max-width: 756px) {
     :root {
-      
         --heading-large: 4rem;
         --heading-medium: 2.6rem;
         --heading-small: 1.6rem;
@@ -379,37 +527,41 @@ select {
     .view-width {
         width: calc(100% - 5em);
     }
+    #navbar {
+        width: 0;
+    }
+    #navbar:hover {
+        width: 0;
+    }
+    #main {
+        margin-left: 0;
+        width: 100%;
+        padding: 10px;
+    }
+    #navbar:hover + #main {
+        margin-left: 0;
+        width: 100%;
+    }
+    #controls {
+        grid-template-columns: 1fr;
+        padding: 15px;
+        gap: 15px;
+    }
+    .full-width {
+        grid-column: 1 / 2;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
 }
 @media only screen and (max-width: 576px) {
     .view-width {
         width: calc(100% - 3em);
     }
+    #mapid {
+        height: 400px;
+    }
 }
 @media only screen and (max-width: 496px) {
-
+    /* Further granular adjustments if needed */
 }
-
-
-body {
-  background-color: lightblue;
-}
-
-
-
-#mapid {
-    height: 600px; 
-    width: calc(100% - 14.7em);
-    margin-left: 14.7em;
-    margin-top: 10px;
-}
-
-
-body.dark-mode {
-    --navbar-bg: 0, 0%, 10%;  
-    --navbar-text: 0, 0%, 100%; 
-    --background: 220, 30%, 20%;
-    --text-primary: 0, 0%, 0%;
-    background-color: hsl(var(--background)) !important;
-    color: hsl(var(--text-primary));
-}
-
