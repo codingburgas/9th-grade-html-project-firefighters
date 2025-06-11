@@ -1,16 +1,16 @@
-/* Your Root Variables */
+
 :root {
-    --primary: 237, 94%, 81%; /* Original primary for highlighting */
-    --background: 266, 16%, 92%; /* Light background */
+    --primary: 237, 94%, 81%;
+    --background: 266, 16%, 92%; 
     --background-secondary: 256, 12%, 12%;
     --background-secondary-dark: 256, 10%, 10%;
     --background-secondary-light: 257, 11%, 16%;
-    --text-primary: 0, 0%, 0%; /* Black text for light mode */
+    --text-primary: 0, 0%, 0%;
 
     --black: 0, 0%, 0%;
     --white: 0, 0%, 100%;
     --quite-gray: 0, 0%, 50%;
-    --grooble: 10, 28%, 93%; /* Your input background color */
+    --grooble: 10, 28%, 93%; 
 
     --heading-large: 5.6rem;
     --heading-medium: 3.6rem;
@@ -20,20 +20,19 @@
 
     --transition-main: .175, .685, .32;
 
-    --font-main: "Poppins", sans-serif; /* Ensure Poppins is linked in HTML */
+    --font-main: "Poppins", sans-serif; 
 
-    --navbar-bg: 0, 0%, 100%; /* White navbar */
-    --navbar-text: 0, 0%, 0%; /* Black navbar text */
-
-    /* Map specific colors, adapted to your theme */
-    --map-circle-color: 0, 80%, 50%; /* A distinct red */
-    --map-accuracy-color: 200, 80%, 50%; /* A distinct blue */
-    --button-success-bg: 140, 60%, 45%; /* Green for report button */
+    --navbar-bg: 0, 0%, 100%;
+    --navbar-text: 0, 0%, 0%;
+   
+    --map-circle-color: 0, 80%, 50%;
+    --map-accuracy-color: 200, 80%, 50%;
+    --button-success-bg: 140, 60%, 45%;
     --button-success-hover: 140, 60%, 40%;
-    --button-disabled-bg: 0, 0%, 75%; /* Grey when disabled */
+    --button-disabled-bg: 0, 0%, 75%; 
 }
 
-/* Keyframe Animations */
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -56,7 +55,7 @@
     100% { border-color: #d4d4d4; box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
 }
 
-/* Base Resets & Global Styles */
+
 *, *::before, *::after {
     box-sizing: inherit;
 }
@@ -120,7 +119,7 @@ body.dark-mode a {
     color: hsl(0, 0%, 70%);
 }
 
-/* Button Base Styles */
+
 button {
     padding: .8em 1.2em;
     border: 1px solid hsl(var(--black));
@@ -149,12 +148,11 @@ fieldset {
     padding: .5em 0;
     border: none;
 }
-
-/* Input/Select/Textarea Base Styles & Animations */
+ 
 input, select, textarea {
     padding: .8em 1.2em;
     font-size: var(--paragraph);
-    background-color: hsl(var(--grooble)); /* Uses the grooble variable */
+    background-color: hsl(var(--grooble));  
     border: 2px solid hsl(var(--grooble));
     outline: none;
     border-radius: .25em;
@@ -171,8 +169,7 @@ textarea {
     font-family: var(--font-main);
     resize: vertical;
 }
-
-/* Flexbox Helpers */
+ 
 .flexbox {
     display: flex;
     justify-content: center;
@@ -227,8 +224,7 @@ textarea {
 .view-width {
     width: 70%;
 }
-
-/* Navbar Specific Styles */
+ 
 #navbar {
     top: 0;
     left: 0;
@@ -318,7 +314,7 @@ textarea {
     opacity: 1;
 }
 
-/* Main Content Area */
+  
 #main {
     margin-left: 5em;
     padding: 20px;
@@ -335,7 +331,7 @@ textarea {
     width: calc(100% - 16em);
 }
 
-/* Map & Controls Specific Styles */
+
 #controls {
     background-color: hsl(var(--white));
     padding: 25px;
@@ -359,7 +355,7 @@ textarea {
 .control-group label {
     margin-bottom: 8px;
     font-weight: 600;
-    color: hsl(var(--quite-gray)); /* Default label color */
+    color: hsl(var(--quite-gray));
     font-size: 0.95em;
 }
 
@@ -367,7 +363,6 @@ textarea {
     grid-column: 1 / 3;
 }
 
-/* Report Button Specifics & Animations */
 #reportButton {
     grid-column: 1 / 3;
     padding: 14px 25px;
@@ -401,7 +396,6 @@ textarea {
     transform: translateY(0);
 }
 
-/* Map Container */
 #mapid {
     height: 600px;
     width: 100%;
@@ -414,7 +408,6 @@ textarea {
     opacity: 0;
 }
 
-/* Message Area Styles & Animations */
 #messageArea, #lastClickedLocation {
     margin-top: 10px;
     padding: 12px 18px;
@@ -435,13 +428,13 @@ textarea {
     border-left-color: hsl(var(--button-success-bg));
 }
 
-/* Placeholder for focus/click animation indication */
+
 #lastClickedLocation:empty::after {
     content: "Click on the map to select the event location.";
     color: hsl(var(--quite-gray));
 }
 
-/* Scrollbar styles */
+
 ::-webkit-scrollbar-track {
     background-color: hsl(var(--background));
 }
@@ -453,31 +446,30 @@ textarea {
     background-color: hsl(var(--primary));
 }
 
-/* Dark Mode Overrides for Visibility */
 body.dark-mode {
     --navbar-bg: 256, 12%, 12%;
     --navbar-text: 0, 0%, 100%;
     --background: 256, 10%, 10%;
     --text-primary: 0, 0%, 100%;
-    --grooble: 256, 15%, 25%; /* <-- ADJUSTED: Lighter input background for dark mode */
+    --grooble: 256, 15%, 25%; 
     
     --map-circle-color: 0, 80%, 65%;
     --map-accuracy-color: 200, 80%, 65%;
     --button-success-bg: 140, 70%, 55%;
     --button-success-hover: 140, 70%, 50%;
-    --button-disabled-bg: 0, 0%, 40%; /* Keeping disabled button dark as per screenshot */
+    --button-disabled-bg: 0, 0%, 40%; 
     
     background-color: hsl(var(--background));
     color: hsl(var(--text-primary));
 }
 
-/* <-- ADDED: Ensure labels are visible in dark mode --> */
+
 body.dark-mode .control-group label {
-    color: hsl(var(--text-primary)); /* Use white text for labels in dark mode */
+    color: hsl(var(--text-primary)); 
 }
 
 
-/* Media Queries */
+
 @media only screen and (max-width: 1660px) {
     :root {
         --heading-large: 5.4rem;
@@ -563,5 +555,5 @@ body.dark-mode .control-group label {
     }
 }
 @media only screen and (max-width: 496px) {
-    /* Further granular adjustments if needed */
+
 }
