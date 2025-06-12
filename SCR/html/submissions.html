@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>All Submissions</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../css/submissions.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav id="navbar">
+        <ul class="navbar-items flexbox-col">
+            <li class="navbar-logo flexbox-left">
+                <a class="navbar-item-inner flexbox">
+                    <img src="../../Assets/images/FireFighters_logo.png" alt="FireFighters_logo" class="logo-image">
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a href="index.html" class="navbar-item-inner flexbox-left">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Home</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a href="articles.html" class="navbar-item-inner flexbox-left">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="folder-open-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Articles</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a href="AboutUs.html" class="navbar-item-inner flexbox-left">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="people-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">About us</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a href="Report.html" class="navbar-item-inner flexbox-left">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Report Incident</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <a href="submissions.html" class="navbar-item-inner flexbox-left">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="list-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Submissions</span>
+                </a>
+            </li>
+            <li class="navbar-item flexbox-left">
+                <button id="colorModeBtn" class="navbar-item-inner flexbox-left" onclick="toggleColorMode()">
+                    <div class="navbar-item-inner-icon-wrapper flexbox">
+                        <ion-icon name="contrast-outline"></ion-icon>
+                    </div>
+                    <span class="link-text">Color Mode</span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <main id="main" class="flexbox-col">
+        <h1>All Incident Submissions</h1>
+        <p style="margin-top: 1.5rem; text-align: center;">
+            This page would display a list of all reported incidents. <br>
+            **Note:** This feature requires backend implementation to store and retrieve data. The current project setup only processes submissions on the client-side.
+        </p>
+        <div id="submissionsList" style="width: 80%; max-width: 800px; margin-top: 20px; text-align: left;">
+            <p style="text-align: center; color: gray;">No submissions to display (backend not implemented).</p>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="../javascript/Report.js"></script> </body>
+</html>

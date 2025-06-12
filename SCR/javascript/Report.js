@@ -1,4 +1,3 @@
-
 function toggleColorMode() {
     const isDark = document.body.classList.toggle('dark-mode');
     localStorage.setItem('colorMode', isDark ? 'dark' : 'light');
@@ -12,35 +11,32 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
 //initialize map
-
-var map = L.map('mapid'); 
+var map = L.map('mapid');
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-
-var currentCircle = null; 
-var lastClickedLatLng = null; 
-const MAX_RADIUS = 1000; 
+var currentCircle = null;
+var lastClickedLatLng = null;
+const MAX_RADIUS = 1000;
 
 //references to report elements
 const reportButton = document.getElementById('reportButton');
 const lastClickedLocationText = document.getElementById('lastClickedLocation');
 const messageArea = document.getElementById('messageArea');
+const downloadReportsButton = document.getElementById('downloadReportsButton'); // New button reference
 
 //function to get HSL color for Leaflet circles
 const getCssVarHsl = (varName) => {
     const rootStyles = getComputedStyle(document.documentElement);
     const hslString = rootStyles.getPropertyValue(varName).trim();
 
-    const parts = hslString.split(',').map(s => parseFloat(s.trim()));
-
-    //fixed hex values matching the theme.
-    if (varName === '--map-circle-color') return '#E74C3C'; // Red
-    if (varName === '--map-accuracy-color') return '#3498DB'; // Blue
+    // The provided CSS variables are not directly HSL, but fixed hex values.
+    // Ensure these match your CSS for consistency.
+    if (varName === '--map-circle-color') return '#E74C3C'; // Red (example: assuming this maps to the CSS var for incident circles)
+    if (varName === '--map-accuracy-color') return '#3498DB'; // Blue (example: assuming this maps to the CSS var for accuracy circles)
     return '#808080'; // Default gray if not found
 };
 
@@ -54,7 +50,7 @@ if (navigator.geolocation) {
             var accuracy = position.coords.accuracy; //accuracy in meters
 
             //sets the map view to your current location
-            map.setView([lat, lng], 13); 
+            map.setView([lat, lng], 13);
 
             //add a marker for the current location and a circle for accuracy
             L.marker([lat, lng]).addTo(map)
@@ -95,7 +91,7 @@ if (navigator.geolocation) {
 } else {
     //geolocation is not supported by this browser
     messageArea.innerHTML = "Geolocation is not supported by your browser.<br>Defaulting to London.";
-    map.setView([51.505, -0.09], 13); 
+    map.setView([51.505, -0.09], 13);
 }
 
 
@@ -124,10 +120,10 @@ map.on('click', function(e) {
     }
 
     lastClickedLocationText.innerHTML = `Selected Location: Latitude: ${lat.toFixed(6)}, Longitude: ${lng.toFixed(6)}`;
-    
+
     //create new circle at the clicked location
     var newCircle = L.circle([lat, lng], {
-        color: getCssVarHsl('--map-circle-color'), 
+        color: getCssVarHsl('--map-circle-color'),
         fillColor: getCssVarHsl('--map-circle-color'),
         fillOpacity: 0.5,
         radius: radius
@@ -135,7 +131,7 @@ map.on('click', function(e) {
 
     newCircle.bindPopup(`Circle Center: <br>${lat.toFixed(6)}, ${lng.toFixed(6)}<br>Radius: ${radius}m`).openPopup();
 
-    currentCircle = newCircle; 
+    currentCircle = newCircle;
 
     //enable the report button if selected location
     reportButton.disabled = false;
@@ -158,14 +154,22 @@ reportButton.addEventListener('click', function() {
         return;
     }
 
-
     const reportData = {
         eventType: eventType,
         description: description,
         location: lastClickedLatLng,
         radius: radius,
-        reportTime: reportDateTime.toLocaleString() 
+        reportTime: reportDateTime.toLocaleString()
     };
+
+    // Retrieve existing reports or initialize an empty array
+    let reports = JSON.parse(localStorage.getItem('disasterReports')) || [];
+
+    // Add the new report
+    reports.push(reportData);
+
+    // Save the updated reports array to localStorage
+    localStorage.setItem('disasterReports', JSON.stringify(reports));
 
     console.log("Report Data:", reportData);
     alert(
@@ -185,7 +189,48 @@ reportButton.addEventListener('click', function() {
     lastClickedLatLng = null;
     reportButton.disabled = true;
     lastClickedLocationText.innerHTML = "Click on the map to select the event location.";
-    document.getElementById('description').value = ""; 
-    document.getElementById('eventType').value = "earthquake"; 
-    document.getElementById('radiusInput').value = 10; 
+    document.getElementById('description').value = "";
+    document.getElementById('eventType').value = "earthquake";
+    document.getElementById('radiusInput').value = 10;
 });
+
+
+// Function to download data as a JSON file
+function downloadReportsAsJson() {
+    // Retrieve all reports from localStorage
+    const reports = JSON.parse(localStorage.getItem('disasterReports')) || [];
+
+    if (reports.length === 0) {
+        alert("No reports to download yet!");
+        return;
+    }
+
+    // Convert the reports array to a nicely formatted JSON string
+    const jsonString = JSON.stringify(reports, null, 2); // 'null, 2' for pretty-printing
+
+    // Create a Blob containing the JSON data
+    const blob = new Blob([jsonString], { type: 'application/json' });
+
+    // Create a temporary anchor element
+    const a = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+
+    // Set the download attribute with a filename
+    a.href = url;
+    a.download = 'disaster_reports.json'; // Name of the downloaded file
+
+    // Programmatically click the anchor to trigger the download
+    document.body.appendChild(a); // Append to body is good practice for cross-browser compatibility
+    a.click();
+
+    // Clean up: remove the anchor and revoke the object URL
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    alert("Your disaster reports have been downloaded!");
+}
+
+// Add event listener for the new download button
+if (downloadReportsButton) {
+    downloadReportsButton.addEventListener('click', downloadReportsAsJson);
+}

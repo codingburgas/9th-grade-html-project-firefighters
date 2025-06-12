@@ -32,6 +32,8 @@
     box-sizing: inherit;
 }
 html, body {
+    overflow: hidden;
+
     margin: 0;
     width: 100%;
     color: hsl(var(--text-primary));
